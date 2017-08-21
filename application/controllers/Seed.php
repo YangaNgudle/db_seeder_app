@@ -1,18 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'/vendor/autoload.php';
 
 class Seed extends CI_Controller {
 
 	public function index()
 	{
-		require_once APPPATH.'/vendor/autoload.php';
-
         $faker = Faker\Factory::create();
-
-        echo $faker->name;
-		echo "<pre>";
-		var_dump($this->input->post());
-
 		// get credentials::
 
 		$host = $this->input->post('db_host');

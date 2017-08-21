@@ -20,15 +20,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    	  	   </div>
    	  	   <div class="col-md-4">
    	  	   	 <label>Host:</label>
-   	  	   	 <input type="text" name="db_host" id="db_host" class="form-control">
+   	  	   	 <input type="text" name="db_host" id="db_host" class="form-control" required>
    	  	   	 <label>Database Name:</label>
-   	  	   	 <input type="text" name="db_name" id="db_name" class="form-control">
+   	  	   	 <input type="text" name="db_name" id="db_name" class="form-control" required>
    	  	   	 <label>Table Name:</label>
-   	  	   	 <input type="text" name="db_table" id="db_table" class="form-control">
+   	  	   	 <input type="text" name="db_table" id="db_table" class="form-control" required>
    	  	   	 <label>Username:</label>
-   	  	   	 <input type="text" name="db_username" id="db_username" class="form-control">
+   	  	   	 <input type="text" name="db_username" id="db_username" class="form-control" required>
    	  	   	 <label>Password</label>
-   	  	   	 <input type="text" name="db_password" id="db_password" class="form-control">
+   	  	   	 <input type="text" name="db_password" id="db_password" class="form-control" required>
    	  	   </div>
    	  	   <div class="col-md-4">
    	  	   	
@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div id="data-rows">
                     <br/>
 		   	  	    <div class="col-md-4">
-		   	  	      <input type="text" placeholder="Column Name" class="form-control" name="db_column[]" >  
+		   	  	      <input type="text" placeholder="Column Name" class="form-control" name="db_column[]" required>  
 		   	  	    </div>
 		   	  	    <div class="col-md-4">
 		   	  	   	  <select class="form-control db_data_type_select" name="db_data_type[]">
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		   	  	   	  </select>	
 		   	  	    </div>
 		   	  	    <div class="col-md-4">
-		   	  	   	  <input type="text" placeholder="Number of rows" class="form-control" name="db_row_number[]" >	
+		   	  	   	  <input type="number" class="form-control" name="db_row_number[]" required>	
 		   	  	    </div>
 	   	  	    </div>
 	   	  	  </div>
@@ -80,14 +80,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script>
 	$(document).ready(function() {
-	    //
-	    // var db_data = {
-	    // 	'column': [],
-	    // 	'data_type': [],
-	    // 	'row_number': [],
-	    // }; 
-
-	    
 	    // Add a new row but persist exisiting data...
 	    $('#seeder').on('click', '#seeder_new_row', function(e) {
 	       var columns = [];
@@ -120,9 +112,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            //class="form-control" name="db_data_type[]"
 		    for(var i = 0; i < columns.length; i++ ) {
 		    	console.log(i);
-		    	DOM_Transform += "<br/><div class='col-md-4'><input placeholder='Column Name' name='db_column[]' class='form-control' type='text' value='" + columns[i] +"' /> </div> " +
+		    	DOM_Transform += "<br/><div class='col-md-4'><input placeholder='Column Name' name='db_column[]' class='form-control' type='text' value='" + columns[i] +"' required /> </div> " +
 		    	"<div class='col-md-4'> <select class='form-control db_data_type_select' name='db_data_type[]' id='" + i +"'><option value='name'>Name</option><option value='address'>Address</option><option value='text'>Text</option><option value='integer'>Integer</option><option value='float'>Float</option></select></div> " +
-		    	"<div class='col-md-4'><input placeholder='Number of rows' name='db_row_number[]' class='form-control' type='text' value='" + row_number[i] +"' /> </div><br/>";
+		    	"<div class='col-md-4'><input placeholder='Number of rows' name='db_row_number[]' class='form-control' type='number' value='" + row_number[i] +"' required /> </div><br/>";
                 
 	            
 	            if(data_type[i] != " ") {
