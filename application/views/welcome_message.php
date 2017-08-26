@@ -20,15 +20,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    	  	   </div>
    	  	   <div class="col-md-4">
    	  	   	 <label>Host:</label>
-   	  	   	 <input type="text" name="db_host" id="db_host" class="form-control" required>
+   	  	   	 <input type="text" name="db_host" id="db_host" class="form-control" required >
    	  	   	 <label>Database Name:</label>
-   	  	   	 <input type="text" name="db_name" id="db_name" class="form-control" required>
+   	  	   	 <input type="text" name="db_name" id="db_name" class="form-control" required >
    	  	   	 <label>Table Name:</label>
-   	  	   	 <input type="text" name="db_table" id="db_table" class="form-control" required>
+   	  	   	 <input type="text" name="db_table" id="db_table" class="form-control" required >
    	  	   	 <label>Username:</label>
-   	  	   	 <input type="text" name="db_username" id="db_username" class="form-control" required>
+   	  	   	 <input type="text" name="db_username" id="db_username" class="form-control" required >
    	  	   	 <label>Password</label>
-   	  	   	 <input type="text" name="db_password" id="db_password" class="form-control" required>
+   	  	   	 <input type="text" name="db_password" id="db_password" class="form-control" >
    	  	   </div>
    	  	   <div class="col-md-4">
    	  	   	

@@ -53,19 +53,25 @@ class Seed extends CI_Controller {
         $this->seedDatabase($host, $db_username, $db_name, $db_username, $db_password, $buildSQL);
 
 	}
-
+    
+    /**
+    *
+    *
+    *
+    *
+    */
 	private function getData($type = 'name', $faker) {
 		switch ($type) {
 			case 'name':
-			   return "'".$faker->name."'";
+			   return $this->addQuotes(stripslashes($faker->name), true);
 			case 'address':
-			   return "'".$faker->address."'";
+			   return $this->addQuotes(stripslashes($faker->address), true);
 			case 'integer':
 			   return $faker->randomDigit;
 			case 'float':
 			   return $faker->randomNumber;
 			default:
-			   return "'".$faker->name."'";
+			   return $this->addQuotes(stripslashes($faker->name), true);
 		}
 	}
 
@@ -81,4 +87,12 @@ class Seed extends CI_Controller {
 	
 		mysqli_close($con);
 	}
+
+	private function addQuotes($item, $singleQuotes = true) {
+		if ($singleQuotes) {
+			return "'".$item."'";
+		}
+
+		return '"'.$item.'"';
+	} 
 }
