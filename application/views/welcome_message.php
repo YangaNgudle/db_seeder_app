@@ -6,7 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<title>The Database Seeder Application</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+	<link rel="stylesheet" type="text/css" href="https://harvesthq.github.io/chosen/chosen.css">
+    
 	
 </head>
 <body>
@@ -48,13 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		   	  	      <input type="text" placeholder="Column Name" class="form-control" name="db_column[]" required>  
 		   	  	    </div>
 		   	  	    <div class="col-md-4">
-		   	  	   	  <select class="form-control db_data_type_select" name="db_data_type[]">
-		   	  	   	  	<option value='name'>Name</option>
-		   	  	   	  	<option value='address'>Address</option>
-		   	  	   	  	<option value='text'>Text</option>
-		   	  	   	  	<option value='integer'>Integer</option>
-		   	  	   	  	<option value='float'>Float</option>
-		   	  	   	  </select>	
+		   	  	   	  <select class='form-control db_data_type_select chosen-select' name='db_data_type[]' id='" + i +"'><optgroup label='Basics'><option value='name'>Name</option><option value='address'>Address</option><option value='text'>Text</option><option value='integer'>Integer</option><option value='float'>Float</option></optgroup><optgroup label='Person'><option value='title'>Title</option><option value='titleMale'>Title Male</option><option value='titleFemale'>Title Female</option><option value='suffix'>Suffix</option><option value='firstNameMale'>First Name Male</option><option value='firstNameFemale'>First Name Female</option><option value='lastName'>Last Name</option></optgroup><optgroup label='Address'><option value='cityPrefix'>City Prefix</option><option value='secondaryAddress'>Secondary Address</option><option value='state'>State</option><option value='stateAbbr'>State Abbreviation</option><option value='citySuffix'>City Suffix</option><option value='streetSuffix'>Street Suffix</option><option value='buildingNumber'>Building Number</option><option value='city'>City</option><option value='streetName'>Street Name</option><option value='streetAddress'>Street Address</option><option value='postcode'>Post Code</option><option value='address'>Address</option><option value='country'>Country</option><option value='latitude'>Latitude</option><option value='longitude'>Longitude</option></optgroup><optgroup label='Company'><option value='company'>Company Name</option><option value='jobTitle'>Job Title</option></optgroup><optgroup lable='DateTime'><option value='date'>Date</option><option value='time'>Time</option><option value='month'>Month</option><option value='year'>Year</option></optgroup><optgroup label='Payment'><option value='creditCardType'>Credit Card Type</option><option value='creditCardNumber'>Credit Card Number</option><option value='creditCardExpirationDate'>Credit Card Expiration Date</option><option value='creditCardExpirationDateString'>Credit Card Expiration Date String</option><option value='swiftBicNumber'>Swift Code</option></optgroup><optgroup label='Internet'><option value='email'>Email</option><option value='username'>Username</option><option value='domainName'>Domain Name</option></optgroup><optgroup label='Misc'><option value='emoji'>Emoji</option><option value='currencyCode'>Currency Code</option><option value='languageCode'>Language Code</option><option value='colorName'>Color Name</option><option value='hexColor'>Hex Color</option><option value='rgbColor'>RGB Color</option></optgroup></select>
 		   	  	    </div>
 		   	  	    <div class="col-md-4">
 		   	  	   	  <input type="number" class="form-control" name="db_row_number[]" required>	
@@ -77,9 +72,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
 
 <script>
 	$(document).ready(function() {
+		// Chosen JS Loading Doc
+		$(".chosen-select").chosen({width: "223px"});
+
 	    // Add a new row but persist exisiting data...
 	    $('#seeder').on('click', '#seeder_new_row', function(e) {
 	       var columns = [];
@@ -113,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    for(var i = 0; i < columns.length; i++ ) {
 		    	console.log(i);
 		    	DOM_Transform += "<br/><div class='col-md-4'><input placeholder='Column Name' name='db_column[]' class='form-control' type='text' value='" + columns[i] +"' required /> </div> " +
-		    	"<div class='col-md-4'> <select class='form-control db_data_type_select' name='db_data_type[]' id='" + i +"'><option value='name'>Name</option><option value='address'>Address</option><option value='text'>Text</option><option value='integer'>Integer</option><option value='float'>Float</option></select></div> " +
+		    	"<div class='col-md-4'> <select class='form-control db_data_type_select chosen-select' name='db_data_type[]' id='" + i +"'><optgroup label='Basics'><option value='name'>Name</option><option value='address'>Address</option><option value='text'>Text</option><option value='integer'>Integer</option><option value='float'>Float</option></optgroup><optgroup label='Person'><option value='title'>Title</option><option value='titleMale'>Title Male</option><option value='titleFemale'>Title Female</option><option value='suffix'>Suffix</option><option value='firstNameMale'>First Name Male</option><option value='firstNameFemale'>First Name Female</option><option value='lastName'>Last Name</option></optgroup><optgroup label='Address'><option value='cityPrefix'>City Prefix</option><option value='secondaryAddress'>Secondary Address</option><option value='state'>State</option><option value='stateAbbr'>State Abbreviation</option><option value='citySuffix'>City Suffix</option><option value='streetSuffix'>Street Suffix</option><option value='buildingNumber'>Building Number</option><option value='city'>City</option><option value='streetName'>Street Name</option><option value='streetAddress'>Street Address</option><option value='postcode'>Post Code</option><option value='address'>Address</option><option value='country'>Country</option><option value='latitude'>Latitude</option><option value='longitude'>Longitude</option></optgroup><optgroup label='Company'><option value='company'>Company Name</option><option value='jobTitle'>Job Title</option></optgroup><optgroup lable='DateTime'><option value='date'>Date</option><option value='time'>Time</option><option value='month'>Month</option><option value='year'>Year</option></optgroup><optgroup label='Payment'><option value='creditCardType'>Credit Card Type</option><option value='creditCardNumber'>Credit Card Number</option><option value='creditCardExpirationDate'>Credit Card Expiration Date</option><option value='creditCardExpirationDateString'>Credit Card Expiration Date String</option><option value='swiftBicNumber'>Swift Code</option></optgroup><optgroup label='Internet'><option value='email'>Email</option><option value='username'>Username</option><option value='domainName'>Domain Name</option></optgroup><optgroup label='Misc'><option value='emoji'>Emoji</option><option value='currencyCode'>Currency Code</option><option value='languageCode'>Language Code</option><option value='colorName'>Color Name</option><option value='hexColor'>Hex Color</option><option value='rgbColor'>RGB Color</option></optgroup></select></div> " +
 		    	"<div class='col-md-4'><input placeholder='Number of rows' name='db_row_number[]' class='form-control' type='number' value='" + row_number[i] +"' required /> </div><br/>";
                 
 	            
@@ -127,6 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    $("#data-rows").html(DOM_Transform);
             console.log(DOM_Select_id_text);
 		    $(DOM_Select_id_text).attr('selected', 'selected');
+		    $(".chosen-select").chosen({width: "223px"});
 
 		   e.preventDefault();
        });
